@@ -57,7 +57,7 @@ public class Flight {
         int index = 0;
         String temp = "";
 
-        while (index <= end && start < end) {
+        while (index <= end) {
             temp = array[index];
             if (array[index].equalsIgnoreCase(FLIGHT_1633)) {
                 array[index] = array[start];
@@ -111,7 +111,7 @@ public class Flight {
         if (passengerId % 2 == 0) {
             flightNumber = FLIGHT_1633;
 
-        } else if (passengerId > 3 && passengerId < 11) {
+        } else if (passengerId / 2 == 1) {
             flightNumber = FLIGHT_1655;
 
         } else {
