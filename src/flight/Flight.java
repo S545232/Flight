@@ -80,7 +80,6 @@ public class Flight {
     public String[] getFlightNumbers(int[] passengerIds) {
         String[] flightNumbers = new String[passengerIds.length];
 
-//        Passenger[] passengers = makePassengersList();
         Passenger[] passengers = makePassengersList1(passengerIds.length);
 
         StringBuilder result = new StringBuilder();
