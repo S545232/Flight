@@ -13,8 +13,6 @@ import java.util.Scanner;
  */
 public class Flight {
 
-    private static final String FLIGHT_1633 = "DL1633", FLIGHT_1655 = "DL1655", FLIGHT_1677 = "DL1677";
-
     public int[] takeUserInputs() {
         int arraySize = 0;
         Scanner sc = new Scanner(System.in);
@@ -28,7 +26,7 @@ public class Flight {
 
         int[] passengerIds = new int[arraySize];
 
-        System.out.println("Enter id's of the passengers, The id should be >=0  and <" + arraySize);
+        System.out.println("Enter id's of the passengers, The id should be >= 0 and < " + arraySize);
         System.out.println("Enter id of the passenger:");
         for (int i = 0; i < arraySize; i++) {
 
@@ -51,38 +49,36 @@ public class Flight {
         return passengerIds;
     }
 
-    public void sortPassengersByFlight(String[] array) {
-        int start = 0;
-        int end = array.length - 1;
-        int index = 0;
-        String temp = "";
+    public Passenger[] makePassengersList(int size) {
+        Passenger[] passengersArray = new Passenger[size];
 
-        while (index <= end) {
-            temp = array[index];
-            if (array[index].equalsIgnoreCase(FLIGHT_1633)) {
-                array[index] = array[start];
-                array[start] = temp;
-                start++;
-                index++;
-
-            } else if (array[index].equalsIgnoreCase(FLIGHT_1677)) {
-                array[index] = array[end];
-                array[end] = temp;
-                end--;
-
-            } else {
-                index++;
-            }
+        for (int i = 0; i < size; i++) {
+            passengersArray[i] = new Passenger(i, getFlightNumber(i), "Elon " + i, "New York", "Hyderabad");
         }
 
+        return passengersArray;
+    }
+
+    private String getFlightNumber(int passengerId) {
+        String flightNumber;
+
+        if (passengerId % 2 == 0) {
+            flightNumber = FlightNumber.FLIGHT_1633.getFlightNumber();
+
+        } else if (passengerId / 2 == 1) {
+            flightNumber = FlightNumber.FLIGHT_1655.getFlightNumber();
+
+        } else {
+            flightNumber = FlightNumber.FLIGHT_1677.getFlightNumber();
+        }
+
+        return flightNumber;
     }
 
     public String[] getFlightNumbers(int[] passengerIds) {
         String[] flightNumbers = new String[passengerIds.length];
 
-        Passenger[] passengers = makePassengersList1(passengerIds.length);
-
-        StringBuilder result = new StringBuilder();
+        Passenger[] passengers = makePassengersList(passengerIds.length);
 
         for (int i = 0; i < passengerIds.length; i++) {
             for (int j = 0; j < passengers.length; j++) {
@@ -95,30 +91,30 @@ public class Flight {
         return flightNumbers;
     }
 
-    public Passenger[] makePassengersList1(int size) {
-        Passenger[] passengersArray = new Passenger[size];
+    public void sortPassengersByFlightNumber(String[] array) {
+        int start = 0;
+        int end = array.length - 1;
+        int index = 0;
+        String temp = "";
 
-        for (int i = 0; i < size; i++) {
-            passengersArray[i] = new Passenger(i, getFlightNumber(i), "Elon" + " " + i, "New York", "Hyderabad");
+        while (index <= end) {
+            temp = array[index];
+            if (array[index].equalsIgnoreCase(FlightNumber.FLIGHT_1633.getFlightNumber())) {
+                array[index] = array[start];
+                array[start] = temp;
+                start++;
+                index++;
+
+            } else if (array[index].equalsIgnoreCase(FlightNumber.FLIGHT_1677.getFlightNumber())) {
+                array[index] = array[end];
+                array[end] = temp;
+                end--;
+
+            } else {
+                index++;
+            }
         }
 
-        return passengersArray;
-    }
-
-    private String getFlightNumber(int passengerId) {
-        String flightNumber;
-
-        if (passengerId % 2 == 0) {
-            flightNumber = FLIGHT_1633;
-
-        } else if (passengerId / 2 == 1) {
-            flightNumber = FLIGHT_1655;
-
-        } else {
-            flightNumber = FLIGHT_1677;
-        }
-
-        return flightNumber;
     }
 
     private void tryAgain() {

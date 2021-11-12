@@ -42,4 +42,9 @@ public class Passenger {
     public String getToLoaction() {
         return toLoaction;
     }
+
+    @Override
+    public String toString() {
+        return "Passenger{" + "passengerId=" + passengerId + ", flightNumber=" + flightNumber + ", name=" + name + ", fromLoaction=" + fromLoaction + ", toLoaction=" + toLoaction + '}';
+    }
 }

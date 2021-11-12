@@ -22,7 +22,7 @@ public class App {
 
         System.out.println("Flight numbers list is: " + Arrays.toString(flightNumbers));
 
-        flight.sortPassengersByFlight(flightNumbers);
+        flight.sortPassengersByFlightNumber(flightNumbers);
 
         System.out.println("Sorted flight numbers of all the passengers is: " + Arrays.toString(flightNumbers));
     }
