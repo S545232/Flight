@@ -1,2 +1,2 @@
 # Flight
-A console app to sort the passengers based on flight numbers.
+A console app to sort the flight numbers of passengers.
