@@ -8,11 +8,15 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- *
+ * Flight Class with business logic to sort the FlightNumbers
  * @author Anil Kumar Kolla(S545232@nwmissouri.edu)
  */
 public class Flight {
 
+    /**
+     * Method to store all the user entered passengerIds into an Array
+     * @return array of passengerIds
+     */
     public int[] takeUserInputs() {
         int arraySize = 0;
         Scanner sc = new Scanner(System.in);
@@ -26,8 +30,8 @@ public class Flight {
 
         int[] passengerIds = new int[arraySize];
 
-        System.out.println("Enter id's of the passengers, The id should be >= 0 and < " + arraySize);
-        System.out.println("Enter id of the passenger:");
+        System.out.println("Enter IDs of the passengers, The ID should be >= 0 and < " + arraySize);
+        System.out.println("Enter ID of the passenger:");
         for (int i = 0; i < arraySize; i++) {
 
             int userInput = sc.nextInt();
@@ -40,7 +44,7 @@ public class Flight {
             }
 
             if (i != arraySize - 1) {
-                System.out.println("Enter id of the next passenger:");
+                System.out.println("Enter ID of the next passenger:");
             }
         }
 
@@ -49,6 +53,11 @@ public class Flight {
         return passengerIds;
     }
 
+    /**
+     * Method to create Passenger objects, populate the passengersArray with the created objects
+     * @param size
+     * @return passengersArray
+     */
     public Passenger[] makePassengersList(int size) {
         Passenger[] passengersArray = new Passenger[size];
 
@@ -59,6 +68,11 @@ public class Flight {
         return passengersArray;
     }
 
+    /**
+     * Allocation of flightNumber to a Passenger based on passengerId
+     * @param passengerId
+     * @return flightNumber
+     */
     private String getFlightNumber(int passengerId) {
         String flightNumber;
 
@@ -75,6 +89,11 @@ public class Flight {
         return flightNumber;
     }
 
+    /**
+     * Method to return the respective FlightNumbers of the passengerIds
+     * @param passengerIds
+     * @return flightNumbers
+     */
     public String[] getFlightNumbers(int[] passengerIds) {
         String[] flightNumbers = new String[passengerIds.length];
 
@@ -91,6 +110,10 @@ public class Flight {
         return flightNumbers;
     }
 
+    /**
+     * Method to sort the given Array of FlightNumbers
+     * @param array
+     */
     public void sortPassengersByFlightNumber(String[] array) {
         int start = 0;
         int end = array.length - 1;
@@ -117,6 +140,9 @@ public class Flight {
 
     }
 
+    /**
+     * Method to display the error message and invoke takeUserInputs method
+     */
     private void tryAgain() {
         System.out.println("Invalid input entered. Please enter the passenger id between 1 to 10 only");
         takeUserInputs();

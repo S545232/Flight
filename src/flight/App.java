@@ -7,20 +7,26 @@ package flight;
 import java.util.Arrays;
 
 /**
- *
+ * App Class with main method
  * @author Anil Kumar Kolla(S545232@nwmissouri.edu)
  */
 public class App {
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
+        
         Flight flight = new Flight();
-
+        
         int[] passengerIds = flight.takeUserInputs();
-        System.out.println("Passengers Ids list is: " + Arrays.toString(passengerIds));
+        
+        System.out.println("IDs of the Passengers are: " + Arrays.toString(passengerIds));
 
         String[] flightNumbers = flight.getFlightNumbers(passengerIds);
 
-        System.out.println("Flight numbers list is: " + Arrays.toString(flightNumbers));
+        System.out.println("Flight Numbers respective to the above IDs of the Passengers: " + Arrays.toString(flightNumbers));
 
         flight.sortPassengersByFlightNumber(flightNumbers);
 
